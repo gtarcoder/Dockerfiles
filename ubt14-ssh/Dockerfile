@@ -23,6 +23,9 @@ RUN echo "root:root" | chpasswd
 #配置ssh
 RUN mkdir /var/run/sshd
 
+RUN sed -i '/exit 0/d' /etc/rc.local
+RUN echo "/usr/sbin/sshd -D &" >> /etc/rc.local
+
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 ENV NOTVISIBLE "in users profile"
