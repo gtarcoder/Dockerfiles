@@ -1,5 +1,5 @@
 ############################################
-# version : debugman007/hadoop:v1
+# version : debugman007/ssh:v1
 # desc : ubuntu14.04 上安装的ssh
 ############################################
 # 设置继承自ubuntu14.04官方镜像
@@ -22,9 +22,6 @@ RUN echo "root:root" | chpasswd
 
 #配置ssh
 RUN mkdir /var/run/sshd
-#RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
-#RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_ecdsa_key
-#RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key
 
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
