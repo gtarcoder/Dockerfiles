@@ -2,7 +2,7 @@
 # version : debugman007/hadoop:v1
 # desc : ubuntu14.04 上安装的ssh
 ############################################
-# 设置继承自centos官方镜像
+# 设置继承自ubuntu14.04官方镜像
 FROM ubuntu:14.04 
 
 # 下面是一些创建者的基本信息
