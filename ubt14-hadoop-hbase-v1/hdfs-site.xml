@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>  
+  
+<!-- Put site-specific property overrides in this file. -->  
+  
+<configuration>  
+        <property>  
+        <name>dfs.namenode.name.dir</name>  
+        <value>file:/opt/hadoop/data/namenode</value>  
+        </property>  
+        <property>  
+                <name>dfs.datanode.data.dir</name>  
+                <value>file:/opt/hadoop/data/datanode</value>  
+        </property>  
+    <property>  
+        <name>dfs.webhdfs.enabled</name>  
+        <value>true</value>  
+    </property>  
+    <property>  
+        <name>dfs.replication</name>  
+        <value>2</value>  
+    </property>  
+    <property>  
+        <name>dfs.datanode.balance.bandwidthPerSec</name>  
+        <value>12000000</value>  
+    </property>  
+    <property>  
+        <name>dfs.datanode.du.reserved</name>  
+        <value>5000000000</value>  
+    </property>  
+    <property>  
+        <name>dfs.blocksize</name>  
+                <value>128m</value>  
+        </property>  
+    <property>  
+        <name>dfs.namenode.handler.count</name>  
+        <value>60</value>  
+    </property>  
+    <property>  
+        <name>dfs.datanode.handler.count</name>  
+        <value>10</value>  
+    </property>  
+    <property>  
+        <name>dfs.datanode.max.xcievers</name>  
+        <value>8192</value>  
+    </property>  
+  
+</configuration>  

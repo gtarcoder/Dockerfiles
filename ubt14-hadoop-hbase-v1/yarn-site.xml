@@ -1,0 +1,61 @@
+<?xml version="1.0"?>  
+  
+<configuration>  
+  
+<!-- Site specific YARN configuration properties -->  
+<property>  
+    <name>yarn.nodemanager.aux-services</name>  
+    <value>mapreduce_shuffle</value>  
+</property>  
+<property>  
+    <name>yarn.resourcemanager.hostname</name>  
+    <value>hadoop-master</value>  
+</property>  
+<property>  
+    <name>yarn.resourcemanager.address</name>  
+    <value>${yarn.resourcemanager.hostname}:8032</value>  
+</property>  
+<property>  
+    <name>yarn.resourcemanager.scheduler.address</name>  
+    <value>${yarn.resourcemanager.hostname}:8030</value>  
+</property>  
+<property>  
+    <name>yarn.resourcemanager.resource-tracker.address</name>      
+    <value>${yarn.resourcemanager.hostname}:8031</value>  
+</property>  
+<property>  
+    <name>yarn.resourcemanager.admin.address</name>  
+    <value>${yarn.resourcemanager.hostname}:8033</value>  
+</property>  
+<property>  
+    <name>yarn.resourcemanager.webapp.address</name>  
+    <value>${yarn.resourcemanager.hostname}:8088</value>  
+</property>  
+  
+<!--  
+<property>    
+    <name>yarn.nodemanager.resource.memory-mb</name>    
+    <value>1024</value>    
+    <discription>The amount of physical memory (in MB) that may be allocated to containers being run by the node manager.</discription>    
+</property>  
+-->  
+  
+<!--<property>  
+    <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>  
+    <value>org.apache.hadoop.mapred.ShuffleHandler</value>  
+</property>  
+<property>  
+    <name>yarn.log-aggregation-enable</name>    
+    <value>true</value>    
+</property>   
+<property>  
+    <name>yarn.log-aggregation.retain-seconds</name>  
+    <value>100000</value>  
+</property>  
+<property>  
+    <name>yarn.log-aggregation.retain-check-interval-seconds</name>  
+    <value>60</value>  
+</property>  
+-->  
+  
+</configuration>  

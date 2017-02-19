@@ -1,0 +1,27 @@
+<?xml version="1.0"?>  
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>  
+  
+<!-- Put site-specific property overrides in this file. -->  
+  
+<configuration>  
+<property>  
+       <name>mapreduce.framework.name</name>  
+       <value>yarn</value>  
+</property>  
+<property>  
+      <name>mapreduce.jobhistory.address</name>  
+      <value>hadoop-master:10020</value>  
+</property>  
+<property>  
+     <name>mapreduce.jobhistory.webapp.address</name>  
+     <value>hadoop-master:19888</value>  
+</property>  
+<property>  
+     <name>mapred.compress.map.output</name>   
+     <value>true</value>  
+</property>  
+<!--<property>  
+     <name>mapred.map.output.compression.codec</name>   
+     <value>org.apache.hadoop.io.compress.SnappyCodec</value>  
+</property>-->  
+</configuration>  
