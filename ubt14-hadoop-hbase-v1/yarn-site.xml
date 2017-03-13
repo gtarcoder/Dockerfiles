@@ -9,7 +9,7 @@
 </property>  
 <property>  
     <name>yarn.resourcemanager.hostname</name>  
-    <value>hadoop-master</value>  
+    <value>master1.multihost</value>  
 </property>  
 <property>  
     <name>yarn.resourcemanager.address</name>  

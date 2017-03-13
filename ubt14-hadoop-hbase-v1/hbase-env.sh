@@ -138,4 +138,4 @@ export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS -XX:PermSize=128m -XX:M
 
 
 export JAVA_HOME=/usr/local/jdk1.7.0_80  
-export HBASE_MANAGES_ZK=false 
+export HBASE_MANAGES_ZK=false

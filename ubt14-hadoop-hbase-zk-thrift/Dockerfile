@@ -1,5 +1,5 @@
 ############################################
-# version : debugman007/ubt14-hadoop-hbase:v1
+# version : debugman007/ubt14-hadoop-hbase-zk-thrift:v1
 # desc : ubuntu上安装的ssh，java, hadoop 
 ############################################
 FROM debugman007/ubt14-ssh:v1
@@ -7,8 +7,10 @@ FROM debugman007/ubt14-ssh:v1
 # 下面是一些创建者的基本信息
 MAINTAINER debugman007 (skc361@163.com)
 
-#为hadoop集群提供dns服务
-RUN sudo apt-get -y install dnsmasq
+CMD sudo apt-get clean
+CMD sudo apt-get update
+CMD sudo apt-get install  -y tcpdump lsof libboost-dev libboost-test-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev make
+
 
 #安装和配置java环境
 #RUN yum -y install java-1.7.0-openjdk*
@@ -56,8 +58,27 @@ RUN cd /usr/local/ && ln -s ./zookeeper-3.4.9 zookeeper
 ENV ZOOKEEPER_HOME /usr/local/zookeeper
 ENV PATH ${ZOOKEEPER_HOME}/bin:$PATH
 
+#安装thrift，用于客户端使用c++等语言连接和操作 hbase
+ADD http://www-eu.apache.org/dist/thrift/0.10.0/thrift-0.10.0.tar.gz  /usr/local/ 
+CMD cd /usr/local && tar -zxvf thrift-0.10.0.tar.gz && rm thrift-0.10.0.tar.gz 
+CMD cd /usr/local/thrift-0.10.0/ &&  ./configure && make && make install
+
 RUN echo "hadoop ALL= NOPASSWD: ALL" >> /etc/sudoers
 
+#配置ssh
 USER hadoop
 RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
+#配置 hadoop hbase等目录
+RUN sudo mkdir -p /opt/hadoop/data/zookeeper
+RUN sudo chown -R hadoop:hadoop $HADOOP_HOME/etc/hadoop  
+RUN sudo chown -R hadoop:hadoop $HBASE_HOME/conf
+RUN sudo chown -R hadoop:hadoop /opt/hadoop  
+RUN sudo chown -R hadoop:hadoop /home/hadoop  
+ 
+COPY bootstrap.sh /home/hadoop/  
+RUN chmod 766 /home/hadoop/bootstrap.sh  
+
+ENTRYPOINT ["/home/hadoop/bootstrap.sh"]  
+CMD ["/bin/bash"]

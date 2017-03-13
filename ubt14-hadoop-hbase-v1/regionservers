@@ -1,2 +1,3 @@
-regionserver1
-regionserver2
+slave1.multihost
+slave2.multihost
+slave3.multihost

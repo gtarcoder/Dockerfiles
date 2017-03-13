@@ -18,7 +18,7 @@
     </property>  
     <property>  
         <name>dfs.replication</name>  
-        <value>2</value>  
+        <value>3</value>  
     </property>  
     <property>  
         <name>dfs.datanode.balance.bandwidthPerSec</name>  
