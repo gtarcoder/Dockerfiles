@@ -9,6 +9,8 @@ MAINTAINER debugman007 (skc361@163.com)
 
 #安装redis
 RUN sudo apt-get update && sudo apt-get install -y redis-server
+#覆盖配置文件(里面开放对外的redis连接)
+ADD redis.conf /etc/redis
 
 #设置用户
 RUN groupadd grad
