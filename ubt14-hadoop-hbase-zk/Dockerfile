@@ -47,20 +47,6 @@ RUN cd /usr/local && ln -s ./hbase-1.2.4 hbase
 ENV HBASE_HOME /usr/local/hbase
 ENV PATH ${HBASE_HOME}/bin:$PATH
 
-# 设置hadoop 和 hbase 的配置文件
-ADD hadoop-env.sh $HADOOP_HOME/etc/hadoop/  
-ADD mapred-env.sh $HADOOP_HOME/etc/hadoop/  
-ADD yarn-env.sh $HADOOP_HOME/etc/hadoop/  
-ADD core-site.xml $HADOOP_HOME/etc/hadoop/  
-ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/  
-ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/  
-ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/  
-ADD slaves $HADOOP_HOME/etc/hadoop/  
-
-ADD hbase-env.sh $HBASE_HOME/conf/
-ADD hbase-site.xml $HBASE_HOME/conf/
-ADD regionservers $HBASE_HOME/conf/
-
 
 #安装thrift，用于客户端使用c++等语言连接和操作 hbase
 ADD thrift-0.10.0.tar.gz  /usr/local/ 

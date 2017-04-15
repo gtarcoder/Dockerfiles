@@ -45,6 +45,13 @@ ENV PATH ${SPARK_HOME}/bin:$PATH
 
 COPY spark-env.sh /usr/local/spark/conf/
 
+#安装scala
+COPY scala-2.11.8.tgz /usr/local
+RUN cd /usr/local && tar -zxvf scala-2.11.8.tgz && rm -rf scala-2.11.8.tgz && mv scala-2.11.8 scala
+RUN chown -R grad:grad /usr/local/scala
+ENV SCALA_HOME /usr/local/scala
+ENV PATH ${SCALA_HOME}/bin:$PATH
+
 USER grad
 RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
