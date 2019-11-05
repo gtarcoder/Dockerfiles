@@ -108,3 +108,9 @@ RUN printf 'eval "$(pyenv init -)"\n' >> ~/.bashrc \
 
 RUN mkdir -p ~/.conan/profiles/
 ADD default ~/.conan/profiles/default
+
+RUN apt-get install python2.7
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python2.7 get-pip.py
+RUN pip2 install python-magic
+RUN pip2 install wget
